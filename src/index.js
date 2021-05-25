@@ -20,5 +20,12 @@ function createForm(){
     const scaleContainer = document.getElementById("scale-container")
     const form = document.createElement('form')
         form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
-        scaleContainer.append(form)    
+        scaleContainer.append(form)
+        form.addEventListener("submit", handleScale)  
+}
+
+function handleScale(e){
+    e.preventDefault()
+    const scaleInput =e.target.children[0]
+    debugger
 }
