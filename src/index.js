@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     getBeers();
-    //createForm();
+    createForm();
 })
 
 
@@ -24,8 +24,24 @@ function createForm(){
         form.addEventListener("submit", handleScale)  
 }
 
+function createBeer(){
+    const beerContainer = document.getElementById("newBeer-container")
+    const form = document.createElement("form")
+    form.innerHTML = `<input placeholder='Name' type=text /><br><input type='submit'/>`
+}
+
 function handleScale(e){
     e.preventDefault()
-    const scaleInput =e.target.children[0]
-    debugger
+    const scaleInput = e.target.children[0]
+    
+    fetch("http://localhost:3000/beer/:id", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            name: 
+        })
+    })
 }
