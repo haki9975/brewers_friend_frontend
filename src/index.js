@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     getBeers();
-    createForm();
+    //createForm();
 })
 
 
@@ -19,5 +19,6 @@ function getBeers(){
 function createForm(){
     const scaleContainer = document.getElementById("scale-container")
     const form = document.createElement('form')
-        form.innerHTML = `<input placeholder='name' type=text /><input type='submit'/>`    
+        form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
+        scaleContainer.append(form)    
 }
