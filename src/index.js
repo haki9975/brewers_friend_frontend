@@ -27,10 +27,20 @@ function createForm(){
 
 function createBeer(){
     const beerContainer = document.getElementById("newBeer-container")
-    const form = document.createElement("form")
-    form.innerHTML = `<input placeholder='Name' type=text /><br><input type='submit'/>`
+    const name = document.createElement("form")
+    const description = document.createElement("form")
+    const abv = document.createElement("form")
+    const ibu = document.createElement("form")
+    const volume = document.createElement("form")
+    const boilVol = document.createElement("form")
+    const mash = document.createElement("form")
+    const ferment = document.createElement("form")
+    const food = document.createElement("form")
+    const tips = document.createElement("form")
+    name.innerHTML = `<input placeholder='Name' type=text /><br><input type='submit'/>`
+    
     beerContainer.append(form)
-    form.addEventListener("submit", handleBeer)
+    //form.addEventListener("submit", handleBeer)
 }
 
 function handleBeer(e){
