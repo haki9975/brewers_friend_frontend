@@ -1,8 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     getBeers(); //fetch to database, gets data and renders beer names
-    createScaleForm(); // creates form for scaling recipes
-    createBeerForm();
+        
 })
+
+class Beer {
+    constructor(name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips) {
+        this.name = name
+        this.description = description
+        this.abv = abv
+        this.ibu = ibu
+        this.volume = volume
+        this.boil_volume = boil_volume
+        this.mash_instruct = mash_instruct
+        this.fermentation_instruct = fermentation_instruct
+        this.food_pairing = food_pairing
+        this.tips = tips
+
+    }
+}
 
 
 function getBeers(){
@@ -27,7 +42,6 @@ function createScaleForm(){
 
 function createBeerForm(){
     const beerContainer = document.getElementById("newBeer-container")
-    //const beerButton = document.getElementById("beerButton")
     const form = document.createElement("form")
     form.innerHTML = `
     <input placeholder="Beer Name" type="text" name="name"/>
@@ -42,13 +56,21 @@ function createBeerForm(){
     <input placeholder="Tips" type="text" name="tips"/>
     <input type='submit'/>
     `
-    
-     
-    
-    //beerContainer.append(form) 
-    //form.addEventListener("submit", handleBeer)
-    
-}
+    beerContainer.append(form) 
+}//create new beer form
+
+function createIngForm(){
+    //grab container
+    const form = document.createElement("form")
+    form.innerHTML = `
+    <input placeholder="Ingredient Name" type="text" name="name"/>
+    <input placeholder="Category" type="text" name="category"/>
+    <input placeholder="Amount" type="number" name="amount"/>
+    <input placeholder="Unit" type="text" name="unit"/>
+    <input type='submit'/>
+    `
+    //container.append(form)
+}//create new ingredient form - should associate with the beer it is 
 
 function handleBeer(e){
     e.preventDefault
