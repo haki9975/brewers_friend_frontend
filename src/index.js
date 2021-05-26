@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    getBeers();
-    createForm();
-    createBeer();
+    getBeers(); //fetch to database, gets data and renders beer names
+    createScaleForm(); // creates form for scaling recipes
+    createBeerForm();
 })
 
 
@@ -15,32 +15,39 @@ function getBeers(){
                 })
             })
                 .catch(error => console.warn(error))
-}
+} //shows list item of beer names. You want to add a listener for these and expand them when they click 
 
-function createForm(){
+function createScaleForm(){
     const scaleContainer = document.getElementById("scale-container")
     const form = document.createElement('form')
         form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
         scaleContainer.append(form)
         form.addEventListener("submit", handleScale)  
-}
+} //create scaling form
 
-function createBeer(){
+function createBeerForm(){
     const beerContainer = document.getElementById("newBeer-container")
-    const name = document.createElement("form")
-    const description = document.createElement("form")
-    const abv = document.createElement("form")
-    const ibu = document.createElement("form")
-    const volume = document.createElement("form")
-    const boilVol = document.createElement("form")
-    const mash = document.createElement("form")
-    const ferment = document.createElement("form")
-    const food = document.createElement("form")
-    const tips = document.createElement("form")
-    name.innerHTML = `<input placeholder='Name' type=text /><br><input type='submit'/>`
+    //const beerButton = document.getElementById("beerButton")
+    const form = document.createElement("form")
+    form.innerHTML = `
+    <input placeholder="Beer Name" type="text" name="name"/>
+    <input placeholder="Description" type="text" name="desription"/>
+    <input placeholder="ABV" type="number" name="abv"/>
+    <input placeholder="IBU" type="number" name="ibu"/>
+    <input placeholder="Volume" type="number" name="volume"/>
+    <input placeholder="Boil Volume" type="number" name="name"/>
+    <input placeholder="Mash Instructions" type="text" name="mash_instruct"/>
+    <input placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/>
+    <input placeholder="Food Pairings" type="text" name="food_pairing"/>
+    <input placeholder="Tips" type="text" name="tips"/>
+    <input type='submit'/>
+    `
     
-    beerContainer.append(form)
+     
+    
+    //beerContainer.append(form) 
     //form.addEventListener("submit", handleBeer)
+    
 }
 
 function handleBeer(e){
@@ -62,4 +69,9 @@ function handleScale(e){
             name: scaleInput.value
         })
     })
+}
+
+function handleBeerForm(e){
+    e.preventDefault()
+
 }
