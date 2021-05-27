@@ -1,20 +1,23 @@
+const beerUrl = new BeerApi("http://localhost:3000")
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    getBeers(); //fetch to database, gets data and renders beer names
-        
+   // getBeers(); //fetch to database, gets data and renders beer names
+      beerUrl.getBeers() 
 })
 
 
-function getBeers(){
-   const beerList = document.getElementById("beerList")
-    fetch("http://localhost:3000/beers")
-        .then(response => response.json())
-            .then(data => {
-                data.forEach(beer => {
-                    beerList.innerHTML += `<li>${beer.name}</li>`
-                })
-            })
-                .catch(error => console.warn(error))
-} //shows list item of beer names. You want to add a listener for these and expand them when they click 
+// function getBeers(){
+//    const beerList = document.getElementById("beerList")
+//     fetch("http://localhost:3000/beers")
+//         .then(response => response.json())
+//             .then(data => {
+//                 data.forEach(beer => {
+//                     beerList.innerHTML += `<li>${beer.name}</li>`
+//                 })
+//             })
+//                 .catch(error => console.warn(error))
+// } //shows list item of beer names. You want to add a listener for these and expand them when they click 
 
 
 function createBeerForm(){
