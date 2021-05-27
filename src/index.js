@@ -3,30 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
 })
 
-class Beer {
-    constructor(name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips) {
-        this.name = name
-        this.description = description
-        this.abv = abv
-        this.ibu = ibu
-        this.volume = volume
-        this.boil_volume = boil_volume
-        this.mash_instruct = mash_instruct
-        this.fermentation_instruct = fermentation_instruct
-        this.food_pairing = food_pairing
-        this.tips = tips
-    }    
-}
-
-class Ingredient {
-    constructor(name, category, amount, unit){
-        this.name = name
-        this.category = category
-        this.amount = amount
-        this.unit = unit
-    }
-}
-
 
 function getBeers(){
    const beerList = document.getElementById("beerList")
@@ -40,13 +16,6 @@ function getBeers(){
                 .catch(error => console.warn(error))
 } //shows list item of beer names. You want to add a listener for these and expand them when they click 
 
-// function createScaleForm(){
-//     const scaleContainer = document.getElementById("scale-container")
-//     const form = document.createElement('form')
-//         form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
-//         scaleContainer.append(form)
-//         form.addEventListener("submit", handleScale)  
-// } //create scaling form...  abandon this for now
 
 function createBeerForm(){
     const beerContainer = document.getElementById("newBeer-container")
@@ -85,23 +54,33 @@ function handleBeer(e){
     const nameInput = e.target.children[0]
 }
 
-// function handleScale(e){
-//     e.preventDefault()
-//     const scaleInput = e.target.children[0]
-    
-//     fetch("http://localhost:3000/beer/:id", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             Accept: "application/json"
-//         },
-//         body: JSON.stringify({
-//             name: scaleInput.value
-//         })
-//     })
-// }
 
 function handleBeerForm(e){
     e.preventDefault()
-
+    
 }
+
+// function handleScale(e){
+    //     e.preventDefault()
+    //     const scaleInput = e.target.children[0]
+    
+    //     fetch("http://localhost:3000/beer/:id", {
+        //         method: "POST",
+        //         headers: {
+            //             "Content-Type": "application/json",
+            //             Accept: "application/json"
+            //         },
+            //         body: JSON.stringify({
+                //             name: scaleInput.value
+                //         })
+                //     })
+// }
+
+
+    // function createScaleForm(){
+    //     const scaleContainer = document.getElementById("scale-container")
+    //     const form = document.createElement('form')
+    //         form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
+    //         scaleContainer.append(form)
+    //         form.addEventListener("submit", handleScale)  
+// } //create scaling form...  abandon this for now
