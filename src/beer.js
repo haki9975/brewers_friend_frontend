@@ -1,6 +1,6 @@
 
 class Beer {
-    constructor({name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips}) {
+    constructor({name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips, ingredients}) {
             this.name = name
             this.description = description
             this.abv = abv
@@ -11,6 +11,7 @@ class Beer {
             this.fermentation_instruct = fermentation_instruct
             this.food_pairing = food_pairing
             this.tips = tips
+            this.ingredients = ingredients.map(ing => new Ingredient(ing))
     }    
 
     buildBeerHtml(){

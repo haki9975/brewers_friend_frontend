@@ -7,4 +7,7 @@ class Ingredient {
         this.amount = amount
         this.unit = unit
     }
+
+
+    
 }

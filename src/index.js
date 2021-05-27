@@ -1,9 +1,9 @@
-const beerUrl = new BeerApi("http://localhost:3000")
+const _url = new BeerApi("http://localhost:3000")
 
 
 document.addEventListener("DOMContentLoaded", () => {
    // getBeers(); //fetch to database, gets data and renders beer names
-      beerUrl.getBeers() 
+      _url.getBeers() 
 })
 
 
