@@ -1,5 +1,6 @@
 
 class Beer {
+    static allBeers = []
     constructor({name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips, ingredients}) {
             this.name = name
             this.description = description
@@ -12,10 +13,12 @@ class Beer {
             this.food_pairing = food_pairing
             this.tips = tips
             this.ingredients = ingredients.map(ing => new Ingredient(ing))
+            Beer.allBeers.push(this)
     }    
 
     buildBeerHtml(){
         const beerList = document.getElementById("beerList")
         beerList.innerHTML += `<li>${this.name}</li>`
     }
+
 }

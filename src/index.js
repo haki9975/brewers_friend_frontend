@@ -4,6 +4,7 @@ const _url = new BeerApi("http://localhost:3000")
 document.addEventListener("DOMContentLoaded", () => {
    // getBeers(); //fetch to database, gets data and renders beer names
       _url.getBeers() 
+      logTarget()
 })
 
 
@@ -57,13 +58,22 @@ function handleBeer(e){
     const nameInput = e.target.children[0]
 }
 
+function logTarget(){
+    const bList =document.getElementById("beerList")
+    bList.addEventListener("click", function(e){
+        console.log(e.target)
+        Beer.allBeers.find(beer => beer.name)
+    })
+
+}
+
 
 function handleBeerForm(e){
     e.preventDefault()
     
 }
 
-// function handleScale(e){
+ //function handleScale(e){
     //     e.preventDefault()
     //     const scaleInput = e.target.children[0]
     
@@ -77,13 +87,13 @@ function handleBeerForm(e){
                 //             name: scaleInput.value
                 //         })
                 //     })
-// }
+ //}
 
 
-    // function createScaleForm(){
+//function createScaleForm(){
     //     const scaleContainer = document.getElementById("scale-container")
     //     const form = document.createElement('form')
     //         form.innerHTML = `<input placeholder='Scale your recipe!' type=text /><br><input type='submit'/>`
     //         scaleContainer.append(form)
     //         form.addEventListener("submit", handleScale)  
-// } //create scaling form...  abandon this for now
+ //} //create scaling form...  abandon this for now

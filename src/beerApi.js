@@ -12,7 +12,6 @@ class BeerApi {
                 .then(data => {
                     data.forEach(beer => {
                       const buildBeer = new Beer(beer)
-                      debugger
                       buildBeer.buildBeerHtml()
                     })
                 })
