@@ -8,7 +8,7 @@ const beerContainer = document.getElementById("modal-body")
 document.addEventListener("DOMContentLoaded", () => {
    // getBeers(); //fetch to database, gets data and renders beer names
       _url.getBeers() 
-      logTarget()
+      renderBeer()
 })
 
 function createBeerForm(){
@@ -54,11 +54,13 @@ function handleBeer(e){
     const nameInput = e.target.children[0]
 }
 
-function logTarget(){
+function renderBeer(){
     const bList =document.getElementById("beerList")
     bList.addEventListener("click", function(e){
-        console.log(e.target)
-        Beer.allBeers.find(beer => beer.name)
+        beer = Beer.allBeers.find(beer => beer.name == e.target.innerHTML)
+        let recipe = document.createElement("p")
+        recipe.innerHTML = `Name: ${beer.name} <br> Description: ${beer.description}<br> ABV: ${beer.abv}<br> IBU: ${beer.ibu}<br> Total Volume: ${beer.volume}<br> Boil Volume: ${beer.boil_volume}<br> Mash Instructions: ${beer.mash_instruct}<br> Fermentation Instructions: ${beer.ferment_instruct}<br> Suggested Food Pairings: ${beer.food_pairing}<br> Brewer's Tips: ${beer.tips}<br>`
+        e.target.append(recipe)
     })
 
 }// eventlistener for beerList container

@@ -5,7 +5,7 @@ class BeerApi {
     constructor(_url){
         this.beerUrl = `${_url}/beers`
         //this.ingredientUrl = `${_url}/ingredients`
-        this.deleteBeerUrl = `${_url}/beers/${id}`
+       // this.deleteBeerUrl = `${_url}/beers/${id}`
     }
 
     getBeers(){
