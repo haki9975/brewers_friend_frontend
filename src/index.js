@@ -2,6 +2,7 @@ const _url = new BeerApi("http://localhost:3000")
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay  = document.getElementById('overlay')
+const beerContainer = document.getElementById("modal-body")
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,35 +12,34 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function createBeerForm(){
-    const beerContainer = document.getElementById("modal-body")
     const form = document.createElement("form")
-    form.innerHTML = `
-    <input placeholder="Beer Name" type="text" name="name"/>
-    <input placeholder="Description" type="text" name="desription"/>
-    <input placeholder="ABV" type="number" name="abv"/>
-    <input placeholder="IBU" type="number" name="ibu"/>
-    <input placeholder="Volume" type="number" name="volume"/>
-    <input placeholder="Boil Volume" type="number" name="name"/>
-    <input placeholder="Mash Instructions" type="text" name="mash_instruct"/>
-    <input placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/>
-    <input placeholder="Food Pairings" type="text" name="food_pairing"/>
-    <input placeholder="Tips" type="text" name="tips"/>
-    <input type='submit'/>
+    form.innerHTML += `
+    <p>Beer Recipe:</p><br>
+    <input placeholder="Beer Name" type="text" name="name"/><br>
+    <input placeholder="Description" type="text" name="desription"/><br>
+    <input placeholder="ABV" type="number" name="abv"/><br>
+    <input placeholder="IBU" type="number" name="ibu"/><br>
+    <input placeholder="Volume" type="number" name="volume"/><br>
+    <input placeholder="Boil Volume" type="number" name="name"/><br>
+    <input placeholder="Mash Instructions" type="text" name="mash_instruct"/><br>
+    <input placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/><br>
+    <input placeholder="Food Pairings" type="text" name="food_pairing"/><br>
+    <input placeholder="Tips" type="text" name="tips"/><br>
     `
-    beerContainer.append(form) 
+    beerContainer.appendChild(form) 
 }//create new beer form
 
 function createIngForm(){
-    //grab container
+    const ingBody = document.getElementById("ing-body")
     const form = document.createElement("form")
-    form.innerHTML = `
-    <input placeholder="Ingredient Name" type="text" name="name"/>
-    <input placeholder="Category" type="text" name="category"/>
-    <input placeholder="Amount" type="number" name="amount"/>
-    <input placeholder="Unit" type="text" name="unit"/>
-    <input type='submit'/>
+    form.innerHTML += `
+    <p>Ingredient:</p><br>
+    <input placeholder="Ingredient Name" type="text" name="name"/><br>
+    <input placeholder="Category" type="text" name="category"/><br>
+    <input placeholder="Amount" type="number" name="amount"/><br>
+    <input placeholder="Unit" type="text" name="unit"/><br>
     `
-    //container.append(form)
+   beerContainer.appendChild(form)
 }//create new ingredient form - should associate with the beer it is 
 
 function handleBeer(e){
@@ -54,40 +54,46 @@ function logTarget(){
         Beer.allBeers.find(beer => beer.name)
     })
 
-}
+}// eventlistener for beerList container
 
 
 function handleBeerForm(e){
+
     e.preventDefault()
     
-}
+}// handler for submitting new beer form
 
 openModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelectorAll(button.dataset.modalTarget)
         openModal(modal)
-        createBeerForm()
+
     })
-})   
+}) //event listener for opening modal
 
 function openModal(modal) {
+    const ingBody = document.getElementById("ing-body")
     if (modal == null) return;
     modal[0].classList.add('active')
     overlay.classList.add('active')
-}
+     createBeerForm()
+    createIngForm()
+} //event handler for opening modal and appending new beer form
 
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal =  button.closest('.modal')
+        const ing = document.getElementById("ing-body")
         const beerContainer = document.getElementById("modal-body")
         closeModal(modal)
         beerContainer.innerHTML = null
+        //ing.innerHTML = null
     })
-})
+})// event listener for closing modal. 
 
 function closeModal(modal) {
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
-}
+}// event handler for closing modal. Probably need to call this when you are submitting new beer. 
 
