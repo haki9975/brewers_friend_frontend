@@ -38,6 +38,7 @@ function createIngForm(){
     <input placeholder="Category" type="text" name="category"/><br>
     <input placeholder="Amount" type="number" name="amount"/><br>
     <input placeholder="Unit" type="text" name="unit"/><br>
+    <button id="add-ing">Add Another Ingredient</button>
     `
    beerContainer.appendChild(form)
 }//create new ingredient form - should associate with the beer it is 
