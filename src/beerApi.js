@@ -1,10 +1,11 @@
 
 
 class BeerApi {
-    
+    dubgger
     constructor(_url){
         this.beerUrl = `${_url}/beers`
-        this.ingredientUrl = `${_url}/ingredients`
+        //this.ingredientUrl = `${_url}/ingredients`
+        this.deleteBeerUrl = `${_url}/beers/${id}`
     }
 
     getBeers(){
@@ -20,7 +21,7 @@ class BeerApi {
     }
 
     addBeers(nameInput){
-        fetch(this.beerUrl, {
+       fetch(this.beerUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,19 +29,35 @@ class BeerApi {
             },
             body: JSON.stringify({
                 name: nameInput.value
+                
             })
         })
             .then(resp => resp.json())
                 .then(data => {
-                    console.log(data, "hello")
-                    if (data.status === 201){
-                        this.addBeers(data.beer)
-                    } else {
-                        alert(data.errors)
-                    }
-                    nameInput.value = ""
+                    console.log(data, this)
+                    debugger
+                    // if (data.status === 201){
+                    //    // this.addBeers(data.beer)
+                    // } else {
+                    //     alert(data.errors)
+                    // }
+                    // nameInput.value = ""
                 })
                     .catch(error => alert(error.message))
+    }
+
+    deleteBeer(beerId){
+        fetch(this.deleteBeerUrl, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                //id: beer id???
+            })
+        })
+
     }
     
    

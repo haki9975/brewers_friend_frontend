@@ -15,16 +15,16 @@ function createBeerForm(){
     const form = document.createElement("form")
     form.innerHTML += `
     <p>Beer Recipe:</p><br>
-    <input placeholder="Beer Name" type="text" name="name"/><br>
-    <input placeholder="Description" type="textarea" name="desription"/><br>
-    <input placeholder="ABV" type="number" step="0.1" name="abv"/><br>
-    <input placeholder="IBU" type="number" step="0.1" name="ibu"/><br>
-    <input placeholder="Volume" type="number" step="0.1" name="volume"/><br>
-    <input placeholder="Boil Volume" type="number" step="0.1" name="name"/><br>
-    <input placeholder="Mash Instructions" type="text" name="mash_instruct"/><br>
-    <input placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/><br>
-    <input placeholder="Food Pairings" type="text" name="food_pairing"/><br>
-    <input placeholder="Tips" type="text" name="tips"/><br>
+    <input id="beerName" placeholder="Beer Name" type="text" name="name"/><br>
+    <input id ="beerDesc" placeholder="Description" type="textarea" name="desription"/><br>
+    <input id="abv" placeholder="ABV" type="number" step="0.1" name="abv"/><br>
+    <input id="ibu" placeholder="IBU" type="number" step="0.1" name="ibu"/><br>
+    <input id="volume" placeholder="Volume" type="number" step="0.1" name="volume"/><br>
+    <input id="bVol" placeholder="Boil Volume" type="number" step="0.1" name="name"/><br>
+    <input id="mashIns" placeholder="Mash Instructions" type="text" name="mash_instruct"/><br>
+    <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/><br>
+    <input id="pairings" placeholder="Food Pairings" type="text" name="food_pairing"/><br>
+    <input id="tips" placeholder="Tips" type="text" name="tips"/><br>
     `
     //form.style()
     beerContainer.appendChild(form) 
@@ -89,7 +89,27 @@ function openModal(modal) {
     button.innerHTML="Submit Recipe"
     button.addEventListener("click", () => {
         console.log("hello")
-        createBeers()
+        let nameInput = document.getElementById("beerName")
+        let desc = document.getElementById("beerDesc")
+        let abv = document.getElementById("abv")
+        let ibu = document.getElementById("ibu")
+        let vol = document.getElementById("volume")
+        let bvol = document.getElementById("bVol")
+        let mash = document.getElementById("mashIns")
+        let ferm  = document.getElementById("fermIns")
+        let pairings = document.getElementById("pairings")
+        let tips = document.getElementById("tips")
+        _url.addBeers(
+            nameInput,
+            desc,
+            abv,
+            ibu,
+            vol,
+            bvol,
+            mash,
+            ferm,
+            pairings,
+            tips)
     })
     beerContainer.append(button)
     
