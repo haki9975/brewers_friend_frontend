@@ -26,15 +26,15 @@
 
 .modal-header {
     padding: 10px 15px;
-    display: flex;
+     display: block;
     justify-content: space-between;
-    align-items: center;
+    align-items: auto;
     border-bottom: 1px solid black;
 
 }
 
 .modal-header .title {
-    align-items: center;
+    align-items: stretch;
     font-size: 1.25rem;
     font-weight: bold;
 }
@@ -49,10 +49,10 @@
 }
 
 .modal-body {
-    display: grid;
+    display: inline-grid;
     padding: 10px 15px;
-    height: max-content;
-    max-height: 100%;
+    height: auto;
+    max-height: 70;
     display: flex;
 }
 

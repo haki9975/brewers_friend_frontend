@@ -31,7 +31,6 @@ function createBeerForm(){
 }//create new beer form
 
 function createIngForm(){
-    // const ingBody = document.getElementById("ing-body")
     const form = document.createElement("form")
     form.innerHTML += `
     <p>Ingredient:</p><br>
@@ -82,10 +81,17 @@ openModalButtons.forEach(button => {
 function openModal(modal) {
     console.log(closeModalButtons)
     if (modal == null) return;
+    const button = document.createElement("button")
     modal[0].classList.add('active')
     overlay.classList.add('active')
     createBeerForm()
     createIngForm()
+    button.innerHTML="Submit Recipe"
+    button.addEventListener("click", () => {
+        console.log("hello")
+        createBeers()
+    })
+    beerContainer.append(button)
     
 
 } //event handler for opening modal and appending new beer form

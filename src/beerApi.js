@@ -1,4 +1,5 @@
 
+
 class BeerApi {
     
     constructor(_url){
@@ -17,8 +18,25 @@ class BeerApi {
                 })
         .catch(error => console.warn(error))
     }
+
+    addBeers(){
+        fetch(this.beerUrl, newBeerForm)
+            .then(resp => resp.json())
+                .then(json => console.log(json))
+                    .catch(error => alert(error.message))
+    }
+    
    
 
+}
+
+const newBeerForm = {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+    },
+    body: JSON.stringify(data)
 }
 
     
