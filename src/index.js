@@ -26,11 +26,12 @@ function createBeerForm(){
     <input placeholder="Food Pairings" type="text" name="food_pairing"/><br>
     <input placeholder="Tips" type="text" name="tips"/><br>
     `
+    //form.style()
     beerContainer.appendChild(form) 
 }//create new beer form
 
 function createIngForm(){
-    const ingBody = document.getElementById("ing-body")
+    // const ingBody = document.getElementById("ing-body")
     const form = document.createElement("form")
     form.innerHTML += `
     <p>Ingredient:</p><br>
@@ -40,7 +41,13 @@ function createIngForm(){
     <input placeholder="Unit" type="text" name="unit"/><br>
     <button id="add-ing">Add Another Ingredient</button>
     `
-   beerContainer.appendChild(form)
+    beerContainer.appendChild(form)
+    const addIngredient = document.getElementById("add-ing")
+    addIngredient.addEventListener("click", (e) => {
+        e.preventDefault
+        addIngredient.remove()
+        createIngForm()
+    })
 }//create new ingredient form - should associate with the beer it is 
 
 function handleBeer(e){
@@ -73,17 +80,14 @@ openModalButtons.forEach(button => {
 }) //event listener for opening modal
 
 function openModal(modal) {
-    const addIngredient = document.getElementById("add-ing")
+    console.log(closeModalButtons)
     if (modal == null) return;
     modal[0].classList.add('active')
     overlay.classList.add('active')
     createBeerForm()
     createIngForm()
-    addIngredient.addEventListener("click", (e) => {
-        e.preventDefault
-        addIngredient.remove()
-        createIngForm()
-    })
+    
+
 } //event handler for opening modal and appending new beer form
 
 closeModalButtons.forEach(button => {
