@@ -19,10 +19,27 @@ class BeerApi {
         .catch(error => console.warn(error))
     }
 
-    addBeers(){
-        fetch(this.beerUrl, newBeerForm)
+    addBeers(nameInput){
+        fetch(this.beerUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name: nameInput.value
+            })
+        })
             .then(resp => resp.json())
-                .then(json => console.log(json))
+                .then(data => {
+                    console.log(data, "hello")
+                    if (data.status === 201){
+                        this.addBeers(data.beer)
+                    } else {
+                        alert(data.errors)
+                    }
+                    nameInput.value = ""
+                })
                     .catch(error => alert(error.message))
     }
     
@@ -30,14 +47,7 @@ class BeerApi {
 
 }
 
-const newBeerForm = {
-    method: "POST",
-    headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-    },
-    body: JSON.stringify(data)
-}
+
 
     
 
