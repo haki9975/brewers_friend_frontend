@@ -16,11 +16,11 @@ function createBeerForm(){
     form.innerHTML += `
     <p>Beer Recipe:</p><br>
     <input placeholder="Beer Name" type="text" name="name"/><br>
-    <input placeholder="Description" type="text" name="desription"/><br>
-    <input placeholder="ABV" type="number" name="abv"/><br>
-    <input placeholder="IBU" type="number" name="ibu"/><br>
-    <input placeholder="Volume" type="number" name="volume"/><br>
-    <input placeholder="Boil Volume" type="number" name="name"/><br>
+    <input placeholder="Description" type="textarea" name="desription"/><br>
+    <input placeholder="ABV" type="number" step="0.1" name="abv"/><br>
+    <input placeholder="IBU" type="number" step="0.1" name="ibu"/><br>
+    <input placeholder="Volume" type="number" step="0.1" name="volume"/><br>
+    <input placeholder="Boil Volume" type="number" step="0.1" name="name"/><br>
     <input placeholder="Mash Instructions" type="text" name="mash_instruct"/><br>
     <input placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/><br>
     <input placeholder="Food Pairings" type="text" name="food_pairing"/><br>
@@ -36,7 +36,7 @@ function createIngForm(){
     <p>Ingredient:</p><br>
     <input placeholder="Ingredient Name" type="text" name="name"/><br>
     <input placeholder="Category" type="text" name="category"/><br>
-    <input placeholder="Amount" type="number" name="amount"/><br>
+    <input placeholder="Amount" type="number" step="0.1" name="amount"/><br>
     <input placeholder="Unit" type="text" name="unit"/><br>
     <button id="add-ing">Add Another Ingredient</button>
     `
@@ -73,12 +73,17 @@ openModalButtons.forEach(button => {
 }) //event listener for opening modal
 
 function openModal(modal) {
-    const ingBody = document.getElementById("ing-body")
+    const addIngredient = document.getElementById("add-ing")
     if (modal == null) return;
     modal[0].classList.add('active')
     overlay.classList.add('active')
-     createBeerForm()
+    createBeerForm()
     createIngForm()
+    addIngredient.addEventListener("click", (e) => {
+        e.preventDefault
+        addIngredient.remove()
+        createIngForm()
+    })
 } //event handler for opening modal and appending new beer form
 
 closeModalButtons.forEach(button => {
