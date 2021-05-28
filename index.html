@@ -7,23 +7,36 @@
         <title>Brewer's Friend</title>
     </head>
     <body>
-        <h1>Welcome to Brewer's Friend!</h1>
-        <div id="instructions">Choose a recipe below, and then scale it to suit your needs!</div>
-        <ul id="beerList"></ul>
-        <div id="scale-container"></div>
-        <button data-modal-target="#modal" id="beerButton" class="button-icon" type="button" name="Create New Beer">Create New Recipe</button>
+        <h1>
+            Welcome to Brewer's Friend!
+        </h1>
+        <div id="instructions">
+            Choose a recipe below, and then scale it to suit your needs!
+        </div>
+        <ul id="beerList">
+
+        </ul>
+        <div id="scale-container">
+            
+        </div>
+        <button data-modal-target="#modal">
+            Create New Recipe
+        </button>
         <div class="modal" id="modal">
             <div class="modal-header">
                 <div class="title">
                     example title 
                 </div>
-                <button data-close-button class="close-button">&times;</button>
+                <button data-close-button class="close-button">
+                    &times;
+                </button>
             </div>
             <div id="modal-body">
                 Lorem blah blah this hthat
             </div>
         </div>
         <div  id="overlay"> </div>
+
         <link href="src/styles.css" rel="stylesheet">
         <script type="text/javascript" src="src/beer.js"></script>
         <script type="text/javascript" src="src/beerApi.js"></script>

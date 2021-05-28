@@ -1,5 +1,5 @@
 const _url = new BeerApi("http://localhost:3000")
-const openModalButtons = document.querySelectorAll('[data-model-target]')
+const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay  = document.getElementById('overlay')
 
@@ -84,8 +84,8 @@ openModalButtons.forEach(button => {
 })   
 
 function openModal(modal) {
-    if (modal == null) return
-    modal.classList.add('active')
+    if (modal == null) return;
+    modal[0].classList.add('active')
     overlay.classList.add('active')
 }
 
