@@ -1,6 +1,7 @@
 const _url = new BeerApi("http://localhost:3000")
 const openModalButtons = document.querySelectorAll('[data-model-target]')
-const closeModalButtons = document.querySelectorAll('[data-model-target]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
+const overlay  = document.getElementById('overlay')
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,6 +75,13 @@ function handleBeerForm(e){
     e.preventDefault()
     
 }
+
+openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelectorAll(button.dataset.modalTarget)
+        openModal(modal)
+    })
+})   
 
  //function handleScale(e){
     //     e.preventDefault()
