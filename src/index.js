@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function createBeerForm(){
-    const beerContainer = document.getElementById("newBeer-container")
+    const beerContainer = document.getElementById("modal-body")
     const form = document.createElement("form")
     form.innerHTML = `
     <input placeholder="Beer Name" type="text" name="name"/>
@@ -80,6 +80,7 @@ openModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelectorAll(button.dataset.modalTarget)
         openModal(modal)
+        createBeerForm()
     })
 })   
 
@@ -92,7 +93,9 @@ function openModal(modal) {
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal =  button.closest('.modal')
+        const beerContainer = document.getElementById("modal-body")
         closeModal(modal)
+        beerContainer.innerHTML = null
     })
 })
 
