@@ -1,4 +1,6 @@
 const _url = new BeerApi("http://localhost:3000")
+const openModalButtons = document.querySelectorAll('[data-model-target]')
+const closeModalButtons = document.querySelectorAll('[data-model-target]')
 
 
 document.addEventListener("DOMContentLoaded", () => {

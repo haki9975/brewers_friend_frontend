@@ -11,19 +11,19 @@
         <div id="instructions">Choose a recipe below, and then scale it to suit your needs!</div>
         <ul id="beerList"></ul>
         <div id="scale-container"></div>
-        <button id="beerButton" class="button-icon" type="button" name="Create New Beer">Create New Recipe</button>
-        <div class="newBeer-container">
-            <div class="recipeHeader">
-                <div class="header">
+        <button data-modal-target="#modal" id="beerButton" class="button-icon" type="button" name="Create New Beer">Create New Recipe</button>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">
                     example title 
                 </div>
-                <button class="close">&times;</button>
+                <button data-close-button class="close-button">&times;</button>
             </div>
-            <div id="recipeBody">
+            <div id="modal-body">
                 Lorem blah blah this hthat
             </div>
         </div>
-        <div id="overlay"></div>
+        <div  id="overlay"> </div>
         <link href="src/styles.css" rel="stylesheet">
         <script type="text/javascript" src="src/beer.js"></script>
         <script type="text/javascript" src="src/beerApi.js"></script>
