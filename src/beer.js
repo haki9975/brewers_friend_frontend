@@ -1,7 +1,8 @@
 
 class Beer {
     static allBeers = []
-    constructor({name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips, ingredients}) {
+    constructor({id, name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips, ingredients}) {
+            this.id
             this.name = name
             this.description = description
             this.abv = abv

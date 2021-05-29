@@ -26,7 +26,6 @@ function createBeerForm(){
     <input id="pairings" placeholder="Food Pairings" type="text" name="food_pairing"/><br>
     <input id="tips" placeholder="Tips" type="text" name="tips"/><br>
     `
-    //form.style()
     beerContainer.appendChild(form) 
 }//create new beer form
 
@@ -60,11 +59,12 @@ function renderBeer(){
         _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br>`
-        //console.log(ing)
         ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br>`)
         recipe.append(_delete)
         e.target.append(recipe)
-        e.target.addEventListener("click", function() {
+        e.target.addEventListener("click", function(e) {
+            debugger
+            deleteBeer()
            _e.remove(p)
         })
     })

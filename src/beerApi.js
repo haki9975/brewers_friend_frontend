@@ -42,7 +42,8 @@ class BeerApi {
         })
             .then(resp => resp.json())
                 .then(data => {
-                    console.log(data, this)
+                    debugger
+                    console.log(data)
                     
                     // if (data.status === 201){
                     //    // this.addBeers(data.beer)
