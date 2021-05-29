@@ -53,7 +53,8 @@ function renderBeer(){
     const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
         beer = Beer.allBeers.find(beer => beer.name == e.target.innerHTML)
-        let ing = beer.ingredients.map(i => i.name)
+        debugger
+        let ing = beer.ingredients.map(i => i.id)
         const _e = e.target
         const _delete = document.createElement("button")
         _delete.innerHTML = "Delete Recipe"
@@ -63,7 +64,7 @@ function renderBeer(){
         recipe.append(_delete)
         e.target.append(recipe)
         e.target.addEventListener("click", function(e) {
-            debugger
+            //debugger
             deleteBeer()
            _e.remove(p)
         })

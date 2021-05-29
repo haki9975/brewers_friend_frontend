@@ -2,7 +2,7 @@
 class Beer {
     static allBeers = []
     constructor({id, name, description, abv, ibu, volume, boil_volume, mash_instruct, fermentation_instruct, food_pairing, tips, ingredients}) {
-            this.id
+            this.id = id
             this.name = name
             this.description = description
             this.abv = abv
