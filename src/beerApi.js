@@ -5,7 +5,7 @@ class BeerApi {
     constructor(_url){
         this.beerUrl = `${_url}/beers`
         //this.ingredientUrl = `${_url}/ingredients`
-       // this.deleteBeerUrl = `${_url}/beers/${id}`
+        // this.deleteBeerUrl = `${_url}/beers/${id}`
     }
 
     getBeers(){
@@ -28,14 +28,22 @@ class BeerApi {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                name: nameInput.value
-                
+                name: nameInput.value,
+                description: desc.value,
+                abv: abv.value,
+                ibu: ibu.value,
+                volume: vol.value,
+                boil_volume: bvol.value,
+                mash_instruct: mash.value,
+                fermentation_instruct: ferm.value,
+                food_pairings: pairings.value,
+                tips: tips.value
             })
         })
             .then(resp => resp.json())
                 .then(data => {
                     console.log(data, this)
-                    debugger
+                    
                     // if (data.status === 201){
                     //    // this.addBeers(data.beer)
                     // } else {

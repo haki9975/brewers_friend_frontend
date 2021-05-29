@@ -59,10 +59,15 @@ function renderBeer(){
     const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
         beer = Beer.allBeers.find(beer => beer.name == e.target.innerHTML)
+        let ing = beer.ingredients
         const _e = e.target
         let recipe = document.createElement("p")
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br>`
+        //console.log(ing)
+        //ing.forEach(i => recipe.innerHTML += `${i.name.name}`)
         e.target.append(recipe)
+        
+        
         e.target.addEventListener("click", function() {
            _e.remove(p)
         })
