@@ -49,25 +49,21 @@ function createIngForm(){
     })
 }//create new ingredient form - should associate with the beer it is 
 
-function handleBeer(e){
-    e.preventDefault
-    const nameInput = e.target.children[0]
-}
-
 function renderBeer(){
     const bList =document.getElementById("beerList")
     const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
         beer = Beer.allBeers.find(beer => beer.name == e.target.innerHTML)
-        let ing = beer.ingredients
+        let ing = beer.ingredients.map(i => i.name)
         const _e = e.target
+        const _delete = document.createElement("button")
+        _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br>`
         //console.log(ing)
-        //ing.forEach(i => recipe.innerHTML += `${i.name.name}`)
+        ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br>`)
+        recipe.append(_delete)
         e.target.append(recipe)
-        
-        
         e.target.addEventListener("click", function() {
            _e.remove(p)
         })
@@ -100,7 +96,6 @@ function openModal(modal) {
     createIngForm()
     button.innerHTML="Submit Recipe"
     button.addEventListener("click", () => {
-        console.log("hello")
         let nameInput = document.getElementById("beerName")
         let desc = document.getElementById("beerDesc")
         let abv = document.getElementById("abv")
@@ -111,21 +106,9 @@ function openModal(modal) {
         let ferm  = document.getElementById("fermIns")
         let pairings = document.getElementById("pairings")
         let tips = document.getElementById("tips")
-        _url.addBeers(
-            nameInput,
-            desc,
-            abv,
-            ibu,
-            vol,
-            bvol,
-            mash,
-            ferm,
-            pairings,
-            tips)
+        _url.addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips)
     })
     beerContainer.append(button)
-    
-
 } //event handler for opening modal and appending new beer form
 
 closeModalButtons.forEach(button => {

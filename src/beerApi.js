@@ -1,7 +1,7 @@
 
 
 class BeerApi {
-    dubgger
+    
     constructor(_url){
         this.beerUrl = `${_url}/beers`
         //this.ingredientUrl = `${_url}/ingredients`
@@ -20,7 +20,7 @@ class BeerApi {
         .catch(error => console.warn(error))
     }
 
-    addBeers(nameInput){
+    addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips){
        fetch(this.beerUrl, {
             method: "POST",
             headers: {
