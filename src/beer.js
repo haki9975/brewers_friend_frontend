@@ -14,6 +14,7 @@ class Beer {
             this.food_pairing = food_pairing
             this.tips = tips
             this.ingredients = ingredients.map(ing => new Ingredient(ing))
+
             Beer.allBeers.push(this)
     }    
 
@@ -22,22 +23,22 @@ class Beer {
         beerList.innerHTML += `<li>${this.name}</li>`
     }
 
-    deleteBeer(){
-        debugger
-        fetch(beerUrl/`${beer.id}`, {
-            method: "DELETE"     
-         })
-         .then(resp => resp.json())
-             .then(data => {
-                    if (data.messsage === "Successfully deleted"){
-                        console.log("We did it!")
-                    } else {
-                        console.log("rats")
-                        alert(data.message)
-                    }
+    // deleteBeer(){
+    //     debugger
+    //     fetch(beerUrl/`${beer.id}`, {
+    //         method: "DELETE"     
+    //      })
+    //      .then(resp => resp.json())
+    //          .then(data => {
+    //                 if (data.messsage === "Successfully deleted"){
+    //                     console.log("We did it!")
+    //                 } else {
+    //                     console.log("rats")
+    //                     alert(data.message)
+    //                 }
 
-                })
-                    .catch(error => console.log(error))
-    }
+    //             })
+    //                 .catch(error => console.log(error))
+    // }
 
 }

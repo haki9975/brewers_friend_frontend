@@ -15,35 +15,36 @@ function createBeerForm(){
     const form = document.createElement("form")
     form.innerHTML += `
     <p>Beer Recipe:</p><br>
-    <input id="beerName" placeholder="Beer Name" type="text" name="name"/><br>
-    <input id ="beerDesc" placeholder="Description" type="textarea" name="desription"/><br>
-    <input id="abv" placeholder="ABV" type="number" step="0.1" name="abv"/><br>
-    <input id="ibu" placeholder="IBU" type="number" step="0.1" name="ibu"/><br>
-    <input id="volume" placeholder="Volume" type="number" step="0.1" name="volume"/><br>
-    <input id="bVol" placeholder="Boil Volume" type="number" step="0.1" name="name"/><br>
-    <input id="mashIns" placeholder="Mash Instructions" type="text" name="mash_instruct"/><br>
-    <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="ferment_instruct"/><br>
-    <input id="pairings" placeholder="Food Pairings" type="text" name="food_pairing"/><br>
-    <input id="tips" placeholder="Tips" type="text" name="tips"/><br>
+    <input id="beerName" placeholder="Beer Name" type="text" name="beer[name]"/><br>
+    <input id ="beerDesc" placeholder="Description" type="textarea" name="beer[desription]"/><br>
+    <input id="abv" placeholder="ABV" type="number" step="0.1" name="beer[abv]"/><br>
+    <input id="ibu" placeholder="IBU" type="number" step="0.1" name="beer[ibu]"/><br>
+    <input id="volume" placeholder="Volume" type="number" step="0.1" name="beer[volume]"/><br>
+    <input id="bVol" placeholder="Boil Volume" type="number" step="0.1" name="beer[name]"/><br>
+    <input id="mashIns" placeholder="Mash Instructions" type="text" name="beer[mash_instruct]"/><br>
+    <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="beer[ferment_instruct]"/><br>
+    <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
+    <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
     `
+    form.id = "recipeForm"
     beerContainer.appendChild(form) 
 }//create new beer form
 
 function createIngForm(){
-    const form = document.createElement("form")
-    form.innerHTML += `
-    <p>Ingredient:</p><br>
-    <input placeholder="Ingredient Name" type="text" name="name"/><br>
-    <input placeholder="Category" type="text" name="category"/><br>
-    <input placeholder="Amount" type="number" step="0.1" name="amount"/><br>
-    <input placeholder="Unit" type="text" name="unit"/><br>
-    <button id="add-ing">Add Another Ingredient</button>
-    `
-    beerContainer.appendChild(form)
     const addIngredient = document.getElementById("add-ing")
+    const form = document.getElementById("recipeForm")
+    const ingForm = `
+    <p>Ingredient:</p><br>
+    <input placeholder="Ingredient Name" type="text" name="beer[ingredient][name]"/><br>
+    <input placeholder="Category" type="text" name="beer[ingredient][category]"/><br>
+    <input placeholder="Amount" type="number" step="0.1" name="beer[ingredient][amount]"/><br>
+    <input placeholder="Unit" type="text" name="beer[ingredient][unit]"/><br>
+        `    
     addIngredient.addEventListener("click", (e) => {
+        const addIngredient = document.getElementById("add-ing")
         e.preventDefault
-        addIngredient.remove()
+        form.innerHTML += ingForm
+        //addIngredient.remove()
         createIngForm()
     })
 }//create new ingredient form - should associate with the beer it is 
@@ -83,12 +84,12 @@ openModalButtons.forEach(button => {
 function openModal(modal) {
     console.log(closeModalButtons)
     if (modal == null) return;
-    const button = document.createElement("button")
+    const button = document.getElementById("submitButton")
     modal[0].classList.add('active')
     overlay.classList.add('active')
     createBeerForm()
     createIngForm()
-    button.innerHTML="Submit Recipe"
+   
     button.addEventListener("click", () => {
         let nameInput = document.getElementById("beerName")
         let desc = document.getElementById("beerDesc")

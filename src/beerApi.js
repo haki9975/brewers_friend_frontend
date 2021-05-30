@@ -10,12 +10,12 @@ class BeerApi {
     getBeers(){
         fetch(this.beerUrl)
             .then(resp => resp.json())
-                .then(data => {
+            .then(data => {
                     data.forEach(beer => {
                       const buildBeer = new Beer(beer)
                       buildBeer.buildBeerHtml()
                     })
-                })
+        })
         .catch(error => console.warn(error))
     }
 
