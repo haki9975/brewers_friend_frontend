@@ -64,12 +64,13 @@ function renderBeer(){
         _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
         beer = Beer.allBeers.find(beer => beer.name == _e.innerHTML)
-        let ing = beer.ingredients.map(i => i.id)
+        let ing = beer.ingredients.map(i => i)
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br><br>`
         ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br><br>`)
         _e.append(recipe)
         recipe.append(_delete)
         _delete.addEventListener("click", function(){
+            debugger
             _e.remove()
             _url.deleteBeer(beer)
         })        
@@ -118,22 +119,20 @@ function openModal(modal) {
             ingredients.push(ingObj)
         }
         let beer = {
-            nameInput: nameInput.value,
-            desc: desc.value,
+            name: nameInput.value,
+            description: desc.value,
             abv: abv.value,
             ibu: ibu.value,
-            vol: vol.value,
-            bvol: bvol.value,
-            mash: mash.value,
-            ferm: ferm.value,
-            pairings: pairings.value,
+            volume: vol.value,
+            boil_volume: bvol.value,
+            mash_instruct: mash.value,
+            fermentation_instruct: ferm.value,
+            food_pairing: pairings.value,
             tips: tips.value,
-            ingredients: ingredients
+            ingredients_attributes: ingredients
         }
-      //  debugger
-        _url.addBeers(beer)
+      _url.addBeers(beer)
         closeModal()
-       // renderBeer()
     })
     beerContainer.append(button)
 } //event handler for opening modal and appending new beer form
@@ -153,6 +152,6 @@ function closeModal() {
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
-    renderBeer()
+    
 }// event handler for closing modal. Probably need to call this when you are submitting new beer. 
 

@@ -23,22 +23,4 @@ class Beer {
         beerList.innerHTML += `<li>${this.name}</li>`
     }
 
-    // deleteBeer(){
-    //     debugger
-    //     fetch(beerUrl/`${beer.id}`, {
-    //         method: "DELETE"     
-    //      })
-    //      .then(resp => resp.json())
-    //          .then(data => {
-    //                 if (data.messsage === "Successfully deleted"){
-    //                     console.log("We did it!")
-    //                 } else {
-    //                     console.log("rats")
-    //                     alert(data.message)
-    //                 }
-
-    //             })
-    //                 .catch(error => console.log(error))
-    // }
-
 }
