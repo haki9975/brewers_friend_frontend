@@ -55,7 +55,6 @@ class BeerApi {
     }
 
     deleteBeer(beer){
-        //debugger
         fetch(this.beerUrl +`/${beer.id}`, {
             method: "DELETE"     
          })
@@ -69,29 +68,6 @@ class BeerApi {
                 })
                     .catch(error => console.log(error))
     }
-
-    // deleteBeer(){
-    //     debugger
-    //     fetch(beerUrl/this.id, {
-    //         method: "DELETE"     
-    //      })
-    //      .then(resp => {
-    //          console.log(resp)
-    //         return resp.json()
-    //         })
-    //             .then(data => {
-    //                 if (data.messsage === "Successfully deleted"){
-    //                     console.log("We did it!")
-    //                 } else {
-    //                     alert(data.message)
-    //                 }
-
-    //             })
-    //                 .catch(error => console.error(error))
-    // }
-    
-   
-
 }
 
 

@@ -62,8 +62,8 @@ function renderBeer(){
         ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br><br>`)
         _e.append(recipe)
         _e.addEventListener("click", function() {
-            _e.remove(p)
-            _delete.onclick()
+            _e.removeChild(recipe)
+            console.log("hello")
         })//closes rendered recipe.
         recipe.append(_delete)
         _delete.onclick = function(){
@@ -85,7 +85,6 @@ openModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelectorAll(button.dataset.modalTarget)
         openModal(modal)
-
     })
 }) //event listener for opening modal
 
@@ -110,6 +109,8 @@ function openModal(modal) {
         let pairings = document.getElementById("pairings")
         let tips = document.getElementById("tips")
         _url.addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips)
+        renderBeer()
+        closeModal(modal)
     })
     beerContainer.append(button)
 } //event handler for opening modal and appending new beer form
