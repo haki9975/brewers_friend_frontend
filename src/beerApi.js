@@ -19,7 +19,8 @@ class BeerApi {
         .catch(error => console.warn(error))
     }
 
-    addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips){
+    addBeers(beer){
+        console.log(beer)
        fetch(this.beerUrl, {
             method: "POST",
             headers: {
@@ -27,16 +28,7 @@ class BeerApi {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                name: nameInput.value,
-                description: desc.value,
-                abv: abv.value,
-                ibu: ibu.value,
-                volume: vol.value,
-                boil_volume: bvol.value,
-                mash_instruct: mash.value,
-                fermentation_instruct: ferm.value,
-                food_pairings: pairings.value,
-                tips: tips.value
+                beer
             })
         })
             .then(resp => resp.json())

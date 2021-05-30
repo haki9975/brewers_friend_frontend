@@ -1,9 +1,11 @@
 const _url = new BeerApi("http://localhost:3000")
+const modal = document.getElementsByClassName("modal")
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')[0]
 const overlay  = document.getElementById('overlay')
 const beerContainer = document.getElementById("modal-body")
-
+const addIngredient = document.getElementById("add-ing")
+let i = 0
 
 document.addEventListener("DOMContentLoaded", () => {
    // getBeers(); //fetch to database, gets data and renders beer names
@@ -30,23 +32,27 @@ function createBeerForm(){
     beerContainer.appendChild(form) 
 }//create new beer form
 
+
+addIngredient.addEventListener("click", (e) => {
+    e.preventDefault
+    //addIngredient.remove()
+   createIngForm()
+})
+
 function createIngForm(){
     const addIngredient = document.getElementById("add-ing")
     const form = document.getElementById("recipeForm")
+    let i = document.getElementsByClassName("ing-field").length
     const ingForm = `
+    <fieldset class="ing-field">
     <p>Ingredient:</p><br>
-    <input placeholder="Ingredient Name" type="text" name="beer[ingredient][name]"/><br>
-    <input placeholder="Category" type="text" name="beer[ingredient][category]"/><br>
-    <input placeholder="Amount" type="number" step="0.1" name="beer[ingredient][amount]"/><br>
-    <input placeholder="Unit" type="text" name="beer[ingredient][unit]"/><br>
+    <input placeholder="Ingredient Name" type="text" name="beer[ingredient][${i}][name]"/><br>
+    <input placeholder="Category" type="text" name="beer[ingredient][${i}][category]"/><br>
+    <input placeholder="Amount" type="number" step="0.1" name="beer[ingredient][${i}][amount]"/><br>
+    <input placeholder="Unit" type="text" name="beer[ingredient][${i}][unit]"/><br>
+    </fieldset>
         `    
-    addIngredient.addEventListener("click", (e) => {
-        const addIngredient = document.getElementById("add-ing")
-        e.preventDefault
-        form.innerHTML += ingForm
-        //addIngredient.remove()
-        createIngForm()
-    })
+    form.innerHTML += ingForm
 }//create new ingredient form - should associate with the beer it is 
 
 function renderBeer(){
@@ -82,7 +88,6 @@ openModalButtons.forEach(button => {
 }) //event listener for opening modal
 
 function openModal(modal) {
-    console.log(closeModalButtons)
     if (modal == null) return;
     const button = document.getElementById("submitButton")
     modal[0].classList.add('active')
@@ -101,25 +106,47 @@ function openModal(modal) {
         let ferm  = document.getElementById("fermIns")
         let pairings = document.getElementById("pairings")
         let tips = document.getElementById("tips")
-        _url.addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips)
+        let ingredients = []
+        let ingredientCount = document.getElementsByClassName("ing-field")
+        for(i=0; i < ingredientCount.length ;i++){
+            let _name = document.getElementsByName(`beer[ingredient][${i}][name]`)[0].value
+            let _category = document.getElementsByName(`beer[ingredient][${i}][category]`)[0].value
+            let _amount = document.getElementsByName(`beer[ingredient][${i}][amount]`)[0].value 
+            let _unit = document.getElementsByName(`beer[ingredient][${i}][unit]`)[0].value
+            let ingObj = {name: _name, category: _category, amount: _amount, unit: _unit}
+            ingredients.push(ingObj)
+        }
+        let beer = {
+            nameInput: nameInput.value,
+            desc: desc.value,
+            abv: abv.value,
+            ibu: ibu.value,
+            vol: vol.value,
+            bvol: bvol.value,
+            mash: mash.value,
+            ferm: ferm.value,
+            pairings: pairings.value,
+            tips: tips.value,
+            ingredients: ingredients
+        }
+
+        _url.addBeers(beer)
         renderBeer()
         closeModal(modal)
     })
     beerContainer.append(button)
 } //event handler for opening modal and appending new beer form
 
-closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal =  button.closest('.modal')
-        const ing = document.getElementById("ing-body")
-        const beerContainer = document.getElementById("modal-body")
+
+closeModalButtons.addEventListener('click', () => {
+    const modal =  document.getElementById("modal")
         closeModal(modal)
-        beerContainer.innerHTML = null
-        //ing.innerHTML = null
-    })
-})// event listener for closing modal. 
+})
+// event listener for closing modal. 
 
 function closeModal(modal) {
+    const beerContainer = document.getElementById("modal-body")
+    beerContainer.innerHTML = null
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')

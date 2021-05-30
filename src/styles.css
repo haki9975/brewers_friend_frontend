@@ -18,6 +18,7 @@
     max-height: 100%;
     display: flex;
     align-items: flex-start;
+    overflow: scroll;
 }
 
 .modal.active {
@@ -30,6 +31,7 @@
     justify-content: space-between;
     align-items: auto;
     border-bottom: 1px solid black;
+    display: flex;
 
 }
 
@@ -37,6 +39,7 @@
     align-items: stretch;
     font-size: 1.25rem;
     font-weight: bold;
+    display: flex;
 }
 
 .modal-header .close-button {
@@ -46,6 +49,7 @@
     outline: none;
     font-size: 1.25rem;
     font-weight: bold;
+    display: flex;
 }
 
 .modal-body {
