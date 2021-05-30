@@ -1,11 +1,10 @@
 
 
 class BeerApi {
-    
+   
     constructor(_url){
         this.beerUrl = `${_url}/beers`
-        //this.ingredientUrl = `${_url}/ingredients`
-        // this.deleteBeerUrl = `${_url}/beers/${id}`
+        
     }
 
     getBeers(){
@@ -42,7 +41,7 @@ class BeerApi {
         })
             .then(resp => resp.json())
                 .then(data => {
-                    debugger
+                   
                     console.log(data)
                     
                     // if (data.status === 201){
@@ -55,19 +54,41 @@ class BeerApi {
                     .catch(error => alert(error.message))
     }
 
-    deleteBeer(beerId){
-        fetch(this.deleteBeerUrl, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                //id: beer id???
-            })
-        })
-
+    deleteBeer(beer){
+        //debugger
+        fetch(this.beerUrl +`/${beer.id}`, {
+            method: "DELETE"     
+         })
+         .then(resp => resp.json())
+             .then(data => {
+                    if (data.messsage == "Successfully deleted"){
+                        console.log(data.message)
+                    } else {
+                        console.log(data.message)
+                    }
+                })
+                    .catch(error => console.log(error))
     }
+
+    // deleteBeer(){
+    //     debugger
+    //     fetch(beerUrl/this.id, {
+    //         method: "DELETE"     
+    //      })
+    //      .then(resp => {
+    //          console.log(resp)
+    //         return resp.json()
+    //         })
+    //             .then(data => {
+    //                 if (data.messsage === "Successfully deleted"){
+    //                     console.log("We did it!")
+    //                 } else {
+    //                     alert(data.message)
+    //                 }
+
+    //             })
+    //                 .catch(error => console.error(error))
+    // }
     
    
 

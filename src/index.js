@@ -52,19 +52,24 @@ function renderBeer(){
     const bList =document.getElementById("beerList")
     const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
-        beer = Beer.allBeers.find(beer => beer.name == e.target.innerHTML)
-       let ing = beer.ingredients.map(i => i.id)
         const _e = e.target
         const _delete = document.createElement("button")
         _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
+        beer = Beer.allBeers.find(beer => beer.name == _e.innerHTML)
+        let ing = beer.ingredients.map(i => i.id)
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br><br>`
         ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br><br>`)
-        recipe.append(_delete)
-        e.target.append(recipe)
-        e.target.addEventListener("click", function(e) {
+        _e.append(recipe)
+        _e.addEventListener("click", function() {
             _e.remove(p)
-        })
+            _delete.onclick()
+        })//closes rendered recipe.
+        recipe.append(_delete)
+        _delete.onclick = function(){
+            _url.deleteBeer(beer)
+            p.remove()
+        }
     })
 
 }// eventlistener for beerList container. Renders Recipes and removes recipe rendering.
