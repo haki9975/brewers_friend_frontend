@@ -1,5 +1,5 @@
 const _url = new BeerApi("http://localhost:3000")
-const modal = document.getElementsByClassName("modal")
+const modal = document.getElementById("modal")
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')[0]
 const overlay  = document.getElementById('overlay')
@@ -95,7 +95,8 @@ function openModal(modal) {
     createBeerForm()
     createIngForm()
    
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault
         let nameInput = document.getElementById("beerName")
         let desc = document.getElementById("beerDesc")
         let abv = document.getElementById("abv")
@@ -129,26 +130,29 @@ function openModal(modal) {
             tips: tips.value,
             ingredients: ingredients
         }
-
+      //  debugger
         _url.addBeers(beer)
-        renderBeer()
-        closeModal(modal)
+        closeModal()
+       // renderBeer()
     })
     beerContainer.append(button)
 } //event handler for opening modal and appending new beer form
 
 
 closeModalButtons.addEventListener('click', () => {
-    const modal =  document.getElementById("modal")
-        closeModal(modal)
+    //const modal =  document.getElementById("modal")
+        closeModal()
 })
 // event listener for closing modal. 
 
-function closeModal(modal) {
+function closeModal() {
+    const button = document.getElementById("submitButton")
     const beerContainer = document.getElementById("modal-body")
     beerContainer.innerHTML = null
+    beerContainer.appendChild(button)
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    renderBeer()
 }// event handler for closing modal. Probably need to call this when you are submitting new beer. 
 
