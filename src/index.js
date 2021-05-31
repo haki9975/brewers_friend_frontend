@@ -35,8 +35,7 @@ function createBeerForm(){
 
 addIngredient.addEventListener("click", (e) => {
     e.preventDefault
-    //addIngredient.remove()
-   createIngForm()
+    createIngForm()
 })
 
 function createIngForm(){
@@ -57,7 +56,6 @@ function createIngForm(){
 
 function renderBeer(){
     const bList =document.getElementById("beerList")
-    //const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
         const _e = e.target
         const _delete = document.createElement("button")
@@ -72,14 +70,14 @@ function renderBeer(){
         }
         _e.append(recipe)
         recipe.append(_delete)
-    _delete.addEventListener("click", function(){
-        _e.remove()
-        _url.deleteBeer(beer)
+        _delete.addEventListener("click", function(){
+            _e.remove()
+            _url.deleteBeer(beer)
         
-    })        
-    _e.addEventListener("click", function() {
-      _e.removeChild(recipe)
-    })//closes rendered recipe.
+        })        
+        _e.addEventListener("click", function() {
+            _e.removeChild(recipe)
+         })//closes rendered recipe.
     
     })
 }// eventlistener for beerList container. Renders Recipes and removes recipe rendering.
@@ -142,8 +140,7 @@ function openModal(modal) {
 
 
 closeModalButtons.addEventListener('click', () => {
-    //const modal =  document.getElementById("modal")
-        closeModal()
+    closeModal()
 })
 // event listener for closing modal. 
 
@@ -155,6 +152,5 @@ function closeModal() {
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
-    
 }// event handler for closing modal. Probably need to call this when you are submitting new beer. 
 
