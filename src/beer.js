@@ -13,17 +13,11 @@ class Beer {
             this.fermentation_instruct = fermentation_instruct
             this.food_pairing = food_pairing
             this.tips = tips
-           // this.ingredients = ingredients.map(ing => new Ingredient(ing))
-
             Beer.allBeers.push(this)
     }    
 
     buildBeerHtml(){
         const beerList = document.getElementById("beerList")
-        //let newBeer = document.createElement('li')
-       // newBeer.id = this.id
         beerList.innerHTML += `<li id=${this.id}>${this.name}</li>`
-        //beerList.append(newBeer)
     }
-
 }
