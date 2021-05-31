@@ -65,14 +65,17 @@ function renderBeer(){
         _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
         beer = Beer.allBeers.find(beer => beer.id == _e.id)
-        let ing = beer.ingredients.map(i => i)
-        recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br><br>`
-        ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br><br>`)
+        if (beer !== undefined ) {
+            let ing = Ingredient.allIngredients.filter(i => i.beer_id == beer.id)
+            recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br><br>`
+            ing.forEach(i => recipe.innerHTML += `<b>Ingredient Number: ${ing.indexOf(i) + 1}</b><br><b>Name:</b> ${i.name}<br><b>Category:</b> ${i.category}<br><b>Amount:</b> ${i.amount} ${i.unit}<br><br>`)
+        }
         _e.append(recipe)
         recipe.append(_delete)
     _delete.addEventListener("click", function(){
         _e.remove()
         _url.deleteBeer(beer)
+        
     })        
     _e.addEventListener("click", function() {
       _e.removeChild(recipe)

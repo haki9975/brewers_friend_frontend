@@ -13,6 +13,8 @@ class BeerApi {
             .then(data => {
                     data.forEach(beer => {
                       const buildBeer = new Beer(beer)
+                      let ing = beer.ingredients
+                      ing.forEach(i => new Ingredient(i))
                       buildBeer.buildBeerHtml()
                     })
         })
@@ -31,18 +33,19 @@ class BeerApi {
         })
             .then(resp => resp.json())
                 .then(data => {
-                    const newBeer = new Beer(data.beer)
                     
-                    if (data.status === 201){
-                        console.log("works")
-                        
+                    if (data.status == 201){
+                        const newIng = data.ingredients
+                        const newBeer = new Beer(data.beer)
+                        console.log("works")                        
                         newBeer.buildBeerHtml()
+                        newIng.forEach(i => new Ingredient(i))
                        
                     } else {
                         console.log(data)
                     }
                 })
-                    .catch(error => alert(error.message))
+                    .catch(error => console.log(error.message))
     }
 
     deleteBeer(beer){
