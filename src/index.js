@@ -154,3 +154,13 @@ function closeModal() {
     overlay.classList.remove('active')
 }// event handler for closing modal. Probably need to call this when you are submitting new beer. 
 
+const searchButton = document.getElementById("search")
+
+searchButton.addEventListener("keyup", (e) => {
+    const beerList = document.getElementById("beerList")
+    beerList.innerHTML = ""
+    let foundBeers = Beer.allBeers.filter( b => b.name.toLowerCase().includes(e.target.value.toLowerCase()) )
+    foundBeers.forEach(i => i.buildBeerHtml())
+
+    
+})

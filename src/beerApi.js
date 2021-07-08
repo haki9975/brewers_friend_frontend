@@ -10,8 +10,8 @@ class BeerApi {
     getBeers(){
         fetch(this.beerUrl)
             .then(resp => resp.json())
-            .then(data => {
-                    data.forEach(beer => {
+            .then(data => { 
+                        data.forEach(beer => {
                       const buildBeer = new Beer(beer)
                       let ing = beer.ingredients
                       ing.forEach(i => new Ingredient(i))
@@ -22,6 +22,7 @@ class BeerApi {
     }
 
     addBeers(beer){
+       
         console.log(beer)        
        fetch(this.beerUrl, {
             method: "POST",
