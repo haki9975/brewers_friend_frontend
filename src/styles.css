@@ -23,6 +23,7 @@
 
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
+    display: grid;
 }
 
 .modal-header {
@@ -31,15 +32,16 @@
     justify-content: space-between;
     align-items: auto;
     border-bottom: 1px solid black;
-    display: flex;
+    /* display: flex; */
 
 }
 
 .modal-header .title {
-    align-items: stretch;
+    align-items: flex-end;
     font-size: 1.25rem;
     font-weight: bold;
     display: flex;
+    justify-content: center;
 }
 
 .modal-header .close-button {
@@ -50,6 +52,7 @@
     font-size: 1.25rem;
     font-weight: bold;
     display: flex;
+    justify-content: left;
 }
 
 .modal-body {
