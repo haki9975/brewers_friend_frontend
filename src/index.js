@@ -29,6 +29,7 @@ function createBeerForm(){
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
     `
     form.id = "recipeForm"
+    form.class = "recipeForm"
     beerContainer.appendChild(form) 
 }//create new beer form
 

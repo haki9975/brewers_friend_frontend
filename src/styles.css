@@ -24,7 +24,7 @@
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .modal-header {
@@ -80,4 +80,8 @@
 #overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.recipeForm {
+    justify-self: center;
 }
