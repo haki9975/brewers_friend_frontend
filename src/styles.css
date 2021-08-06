@@ -19,6 +19,12 @@
     text-align: center;
 }
 
+.recipe-container {
+    display: table;
+    margin: auto;
+    text-align: center;
+}
+
 .searchDiv {
     display: table;
     margin: auto;

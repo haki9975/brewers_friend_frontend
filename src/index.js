@@ -58,6 +58,7 @@ function renderBeer(){
         const _delete = document.createElement("button")
         _delete.innerHTML = "Delete Recipe"
         let recipe = document.createElement("p")
+        recipe.classList = "recipe-container"
         beer = Beer.allBeers.find(beer => beer.name == _e.innerHTML)
         let ing = beer.ingredients.map(i => i.id)
         recipe.innerHTML = `<b>Name:</b> ${beer.name} <br> <b>Description:</b> ${beer.description}<br> <b>ABV:</b> ${beer.abv}<br> <b>IBU:</b> ${beer.ibu}<br> <b>Total Volume:</b> ${beer.volume} Liters<br> <b>Boil Volume:</b> ${beer.boil_volume} Liters<br> <b>Mash Instructions:</b> ${beer.mash_instruct}<br> <b>Fermentation Instructions:</b> ${beer.fermentation_instruct}<br> <b>Suggested Food Pairings:</b> ${beer.food_pairing}<br> <b>Brewer's Tips:</b> ${beer.tips}<br><br>`
