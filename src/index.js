@@ -52,7 +52,6 @@ function createIngForm(){
 
 function renderBeer(){
     const bList =document.getElementById("beerList")
-    //const p = document.getElementsByTagName("p")
     bList.addEventListener("click", function(e){
         const _e = e.target
         const _delete = document.createElement("button")
