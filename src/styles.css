@@ -13,6 +13,17 @@
     margin: auto;
 }
 
+.instruct {
+    display: table;
+    margin: auto;
+    justify-content: center;
+}
+
+.searchDiv {
+    display: table;
+    margin: auto;
+}
+
 .modal {
     position: fixed;
     top: 50%;
@@ -133,5 +144,5 @@ li {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 15.4px;
+    line-height: 15.4px;   
 }
