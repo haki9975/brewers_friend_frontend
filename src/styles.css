@@ -13,6 +13,12 @@
     margin: auto;
 }
 
+.beer-item {
+    display: table;
+    margin: auto;
+    text-align: center;
+}
+
 .instruct {
     display: table;
     margin: auto;
@@ -22,7 +28,7 @@
 .recipe-container {
     display: table;
     margin: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .searchDiv {

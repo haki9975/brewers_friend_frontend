@@ -20,7 +20,7 @@ class Beer {
 
     buildBeerHtml(){
         const beerList = document.getElementById("beerList")
-        beerList.innerHTML += `<li class="beer-item">${this.name}</li><br>`
+        beerList.innerHTML += `<div class="beer-item"><li>${this.name}</li><br></div>`
     }
 
     // deleteBeer(){
