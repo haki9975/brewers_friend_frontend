@@ -126,3 +126,12 @@ pre {
     font-weight: 400;
     line-height: 18.5714px;
 }
+
+li {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+}
