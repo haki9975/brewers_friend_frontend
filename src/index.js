@@ -111,7 +111,6 @@ function openModal(modal) {
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal =  button.closest('.modal')
-        const ing = document.getElementById("ing-body")
         const beerContainer = document.getElementById("modal-body")
         closeModal(modal)
         beerContainer.innerHTML = null
