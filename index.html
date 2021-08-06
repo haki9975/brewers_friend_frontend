@@ -13,9 +13,14 @@
         <div id="instructions">
             <h3>Welcome to Brewer's Friend!</h3>
             <p>Click on a beer name below to view the recipe and ingredients. Add a new recipe by clicking on the new recipe button!</p>
+            <p>Search for a name or a style in the search bar to quickly hone in on a specific beer!</p>
+            
         </div>
         <div>
-            <input id="search" type="text" placeholder="Search Beers"/>
+            
+        </div>
+        <div>
+            <input id="search" type="text" placeholder="Search Beers"/> <button data-modal-target="#modal">Create New Recipe</button>
         </div>
         <ul id="beerList" class="beer-list">
 
@@ -23,9 +28,7 @@
         <div id="scale-container">
             
         </div>
-        <button data-modal-target="#modal">
-            Create New Recipe
-        </button>
+        
         <div class="modal" id="modal">
             <div class="modal-header">
                 <div  class="title" >
