@@ -10,43 +10,48 @@ class BeerApi {
     getBeers(){
         fetch(this.beerUrl)
             .then(resp => resp.json())
-            .then(data => { 
-                        data.forEach(beer => {
+            .then(data => {
+                    data.forEach(beer => {
                       const buildBeer = new Beer(beer)
-                      let ing = beer.ingredients
-                      ing.forEach(i => new Ingredient(i))
                       buildBeer.buildBeerHtml()
                     })
         })
         .catch(error => console.warn(error))
     }
 
-    addBeers(beer){
-       
-        console.log(beer)        
+    addBeers(nameInput, desc, abv, ibu, vol, bvol, mash, ferm, pairings, tips){
        fetch(this.beerUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({beer})        
+            body: JSON.stringify({
+                name: nameInput.value,
+                description: desc.value,
+                abv: abv.value,
+                ibu: ibu.value,
+                volume: vol.value,
+                boil_volume: bvol.value,
+                mash_instruct: mash.value,
+                fermentation_instruct: ferm.value,
+                food_pairings: pairings.value,
+                tips: tips.value
+            })
         })
             .then(resp => resp.json())
                 .then(data => {
+                   
+                    console.log(data)
                     
-                    if (data.status == 201){
-                        const newIng = data.ingredients
-                        const newBeer = new Beer(data.beer)
-                        console.log("works")                        
-                        newBeer.buildBeerHtml()
-                        newIng.forEach(i => new Ingredient(i))
-                       
-                    } else {
-                        console.log(data)
-                    }
+                    // if (data.status === 201){
+                    //    // this.addBeers(data.beer)
+                    // } else {
+                    //     alert(data.errors)
+                    // }
+                    // nameInput.value = ""
                 })
-                    .catch(error => console.log(error.message))
+                    .catch(error => alert(error.message))
     }
 
     deleteBeer(beer){
