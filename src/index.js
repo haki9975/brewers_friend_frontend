@@ -119,7 +119,6 @@ closeModalButtons.forEach(button => {
         const beerContainer = document.getElementById("modal-body")
         closeModal(modal)
         beerContainer.innerHTML = null
-        //ing.innerHTML = null
     })
 })// event listener for closing modal. 
 
