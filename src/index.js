@@ -3,6 +3,7 @@ const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay  = document.getElementById('overlay')
 const beerContainer = document.getElementById("modal-body")
+const searchButton = document.getElementById("search")
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -106,7 +107,8 @@ function openModal(modal) {
         closeModal(modal)
     })
     beerContainer.append(button)
-} //event handler for opening modal and appending new beer form
+} 
+//event handler for opening modal and appending new beer form
 
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
