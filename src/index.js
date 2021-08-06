@@ -42,10 +42,8 @@ function createIngForm(){
     <input placeholder="Unit" type="text" name="beer[ingredient][unit]"/><br>
         `    
     addIngredient.addEventListener("click", (e) => {
-        const addIngredient = document.getElementById("add-ing")
         e.preventDefault
         form.innerHTML += ingForm
-        //addIngredient.remove()
         createIngForm()
     })
 }//create new ingredient form - should associate with the beer it is 
