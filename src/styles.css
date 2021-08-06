@@ -16,7 +16,7 @@
 .instruct {
     display: table;
     margin: auto;
-    justify-content: center;
+    text-align: center;
 }
 
 .searchDiv {
