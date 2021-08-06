@@ -7,7 +7,6 @@ const searchButton = document.getElementById("search")
 
 
 document.addEventListener("DOMContentLoaded", () => {
-   // getBeers(); //fetch to database, gets data and renders beer names
       _url.getBeers() 
       renderBeer()
 })
