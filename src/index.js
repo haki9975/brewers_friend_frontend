@@ -113,8 +113,6 @@ function submitRecipe (e) {
 }
 
 
-
-
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         // const modal =  button.closest('.modal')
@@ -135,7 +133,5 @@ searchButton.addEventListener("keyup", (e) => {
     const beerList = document.getElementById("beerList")
     beerList.innerHTML = ""
     let foundBeers = Beer.allBeers.filter( b => b.name.toLowerCase().includes(e.target.value.toLowerCase()) )
-    foundBeers.forEach(i => i.buildBeerHtml())
-
-    
+    foundBeers.forEach(i => i.buildBeerHtml())    
 })
