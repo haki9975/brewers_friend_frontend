@@ -25,7 +25,7 @@ function createBeerForm(){
     <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="beer[ferment_instruct]"/><br>
     <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
-    <button type="submit" id="submitButton">Hello</button><br>
+    <button type="submit" id="submitButton">Submit Recipe</button><br>
     <button id="add-Ing" onclick="createIngForm()">Add Ingredient Form</button>
     `
     form.id = "recipeForm"
