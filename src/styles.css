@@ -71,12 +71,15 @@
 
 .modal-header .title {
     /* align-items: stretch; */
-    margin-right: auto;
-    margin-left: auto;
+
     text-align: center;
     font-size: 1.25rem;
     font-weight: bold;
     margin: 10px;
+}
+
+.close-div {
+    text-align: right;
 }
 
 .modal-header .close-button {
