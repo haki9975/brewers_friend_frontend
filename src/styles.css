@@ -35,7 +35,11 @@
 
 .searchDiv {
     display: table;
-    margin: auto;
+    margin: 10px auto 10px auto;
+}
+.recipeDiv {
+    display: table;
+    margin:  10px auto 10px auto;
 }
 
 .modal {
@@ -65,11 +69,9 @@
 
 
 
-/* #add-ing {
+#new-beer {
     margin: 10px auto 10px auto;
-    float: center;
-} */
-
+}
 button.submitButton {
     margin: 10px auto 10px auto;
     text-align: left;
