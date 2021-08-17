@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createBeerForm(){
     const form = document.createElement("form")
+    const div = document.createElement("div")
     form.innerHTML += `
     <p>Beer Recipe:</p><br>
     <input id="beerName" placeholder="Beer Name" type="text" name="beer[name]"/><br>
@@ -25,18 +26,16 @@ function createBeerForm(){
     <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="beer[ferment_instruct]"/><br>
     <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
-    <button type="submit" id="submitButton">Submit Recipe</button><br>
-    <button id="add-Ing" onclick="createIngForm()">Add Ingredient Form</button>
+    <button type="submit" onclick="submitRecipe" id="submitButton" class="submitButton">Submit Recipe</button>
     `
     form.id = "recipeForm"
+    div.innerHTML =  `<button id="add-Ing" onclick="createIngForm()">Add Ingredient Form</button>`
     beerContainer.appendChild(form) 
+    beerContainer.appendChild(div)
 }//create new beer form
 
 function createIngForm(){
-    let addIngredient = document.getElementById("add-Ing")
-    // const addIngredient = document.getElementById("add-ing")
     const form = document.getElementById("recipeForm")
- 
     const ingForm = `
     <p>Ingredient:</p><br>
     <input placeholder="Ingredient Name" type="text" name="beer[ingredient][name]"/><br>
@@ -44,11 +43,7 @@ function createIngForm(){
     <input placeholder="Amount" type="number" step="0.1" name="beer[ingredient][amount]"/><br>
     <input placeholder="Unit" type="text" name="beer[ingredient][unit]"/><br>
     `    
-    addIngredient.addEventListener("click", (e) => {
-        e.preventDefault
-        form.innerHTML += ingForm
-        createIngForm()
-    })
+    form.innerHTML += ingForm
 }//create new ingredient form - should associate with the beer it is 
 
 function renderBeer(){
@@ -85,19 +80,13 @@ openModalButtons.forEach(button => {
 }) //event listener for opening modal
 
 function openModal(modal) {
-    // if (modal == null) {
-    //     console.log("nope")
-    //     return}
-    
     modal[0].classList.add('active')
     overlay.classList.add('active')
-    
     createBeerForm()
     if (modal != null) {
         createIngForm()
         let button = document.getElementById("submitButton")
-        console.log("hello", button)
-    button.addEventListener("click", (e) => {
+        button.addEventListener("click", (e) => {
         e.preventDefault
         let nameInput = document.getElementById("beerName")
         let desc = document.getElementById("beerDesc")
@@ -117,6 +106,14 @@ function openModal(modal) {
     }
 } 
 //event handler for opening modal and appending new beer form
+
+function submitRecipe (e) {
+    e.preventDefault
+    console.log(e)
+}
+
+
+
 
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
