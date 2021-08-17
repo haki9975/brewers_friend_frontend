@@ -1,7 +1,9 @@
 *, *::after, *::before {
     box-sizing: border-box;
 }
-
+body {
+    background-color: rgba(38, 67, 146, 0.884);
+}
 .logo {
     display: block;
     margin-left: auto;
@@ -33,11 +35,11 @@
     text-align: left;
     border-style: solid;
     border-width: thin;
-    border-color: rgb(64, 64, 192);
+    border-color: rgb(204, 163, 28);
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    background-color: slategray;
+    background-color: rgba(112, 128, 144, 0.219);
     
 }
 

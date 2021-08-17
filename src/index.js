@@ -15,6 +15,7 @@ function createBeerForm(){
     const form = document.createElement("form")
     const div = document.createElement("div")
     form.innerHTML += `
+    <div>
     <p>Beer Recipe:</p><br>
     <input id="beerName" placeholder="Beer Name" type="text" name="beer[name]"/><br>
     <input id ="beerDesc" placeholder="Description" type="textarea" name="beer[desription]"/><br>
@@ -27,6 +28,7 @@ function createBeerForm(){
     <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
     <button type="submit" onclick="submitRecipe" id="submitButton" class="submitButton">Submit Recipe</button>
+    </div>
     `
     form.id = "recipeForm"
     div.innerHTML =  `<button id="add-Ing" onclick="createIngForm()">Add Ingredient Form</button>`
