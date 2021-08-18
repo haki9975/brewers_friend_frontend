@@ -226,6 +226,7 @@ function createBeerForm() {
     <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="beer[ferment_instruct]"/><br>
     <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
+    <input type="submit" id="submitButton"></input>
     `;
   form.id = "recipeForm";
   beerContainer.appendChild(form);
