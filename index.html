@@ -1,65 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Brewer's Friend</title>
-    </head>
-    <body>
-        <div class="header-logo">
-          <img src="../frontend/images/BREWERSfriend.jpg" width="500" alt="Brewers Friend Logo" class="logo"/>
-        </div>
-        <div id="instructions" class="instruct">
-            <h3>Welcome to Brewer's Friend!</h3>
-            <p>Click on a beer name below to view the recipe and ingredients. Add a new recipe by clicking on the new recipe button!</p>
-            <p>Search for a name or a style in the search bar to quickly hone in on a specific beer!</p>
-            
-        </div>
-        <div>
-            
-        </div>
-        <div class="searchDiv">
-            <input id="search" type="text" placeholder="Search Beers"/>
-        </div>
-        <hr>
-        <div class="recipeDiv">
-            <button class="new-beer" data-modal-target="#modal">Create New Recipe</button><br><br>
-        </div>
-        <ul id="beerList" class="beer-list">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brewer's Friend</title>
+  </head>
+  <body>
+    <div class="header-logo">
+      <img
+        src="../frontend/images/BREWERSfriend.jpg"
+        width="500"
+        alt="Brewers Friend Logo"
+        class="logo"
+      />
+    </div>
+    <div id="instructions" class="instruct">
+      <h3>Welcome to Brewer's Friend!</h3>
+      <p>
+        Click on a beer name below to view the recipe and ingredients. Add a new
+        recipe by clicking on the new recipe button!
+      </p>
+      <p>
+        Search for a name or a style in the search bar to quickly hone in on a
+        specific beer!
+      </p>
+    </div>
+    <div class="searchDiv">
+      <input id="search" type="text" placeholder="Search Beers" />
+    </div>
+    <hr />
+    <div class="recipeDiv">
+      <button class="new-beer" data-modal-target="#modal">
+        Create New Recipe
+      </button>
+      <br /><br />
+    </div>
+    <ul id="beerList" class="beer-list"></ul>
+    <div id="scale-container"></div>
 
-        </ul>
-        <div id="scale-container">
-            
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="close-div">
+          <button data-close-button class="close-button">&times;</button>
         </div>
-        
-        <div class="modal" id="modal">
-            <div class="modal-header">
-                <div class="close-div">
-                    <button data-close-button class="close-button">
-                       &times;
-                    </button> 
-                  </div>
-                <div  class="title" >
-                    <h1>Create New Recipe </h1>
-                </div>
-            </div>
-            <div id="modal-body">     
-                
-            
-          
-
-          </div>
-
+        <div class="title">
+          <h1>Create New Recipe</h1>
         </div>
+      </div>
+      <div id="modal-body"></div>
+    </div>
 
+    <div id="overlay"></div>
 
-        <div  id="overlay"> </div>
-
-        <link href="src/styles.css" rel="stylesheet">
-        <script type="text/javascript" src="../frontend/src/beer.js"></script>
-        <script type="text/javascript" src="../frontend/src/beerApi.js"></script>
-        <script type="text/javascript" src="../frontend/src/ingredient.js"></script>
-        <script type="text/javascript" src="../frontend/src/index.js"></script>
-    </body>
+    <link href="src/styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="../frontend/src/beer.js"></script>
+    <script type="text/javascript" src="../frontend/src/beerApi.js"></script>
+    <script type="text/javascript" src="../frontend/src/ingredient.js"></script>
+    <script type="text/javascript" src="../frontend/src/index.js"></script>
+  </body>
 </html>
