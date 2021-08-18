@@ -230,6 +230,15 @@ function createBeerForm() {
     `;
   form.id = "recipeForm";
   beerContainer.appendChild(form);
+  const addIng = document.createElement("button");
+  addIng.type = "button";
+  addIng.id = "add-Ing";
+  addIng.innerHTML = "Add Ingredient";
+  addIng.addEventListener("click", (e) => {
+    e.preventDefault;
+    createIngForm();
+  });
+  beerContainer.appendChild(addIng);
 } //create new beer form
 
 // addIngredient.addEventListener("click", (e) => {
@@ -296,7 +305,7 @@ openModalButtons.forEach((button) => {
 function openModal(modal) {
   if (modal == null) return;
   if (modal != null) {
-    const button = document.getElementById("submitButton");
+    // const button = document.getElementById("submitButton");
     modal[0].classList.add("active");
     overlay.classList.add("active");
     createBeerForm();
