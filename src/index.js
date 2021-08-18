@@ -207,7 +207,7 @@ const addIngredient = document.getElementById("add-ing");
 let i = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // getBeers(); //fetch to database, gets data and renders beer names
+  //fetch to database, gets data and renders beer names
   _url.getBeers();
   renderBeer();
 });
@@ -295,62 +295,66 @@ openModalButtons.forEach((button) => {
 
 function openModal(modal) {
   if (modal == null) return;
-  const button = document.getElementById("submitButton");
-  modal[0].classList.add("active");
-  overlay.classList.add("active");
-  createBeerForm();
-  createIngForm();
+  if (modal != null) {
+    const button = document.getElementById("submitButton");
+    modal[0].classList.add("active");
+    overlay.classList.add("active");
+    createBeerForm();
+    createIngForm();
 
-  button.addEventListener("click", (e) => {
-    e.preventDefault;
-    let nameInput = document.getElementById("beerName");
-    let desc = document.getElementById("beerDesc");
-    let abv = document.getElementById("abv");
-    let ibu = document.getElementById("ibu");
-    let vol = document.getElementById("volume");
-    let bvol = document.getElementById("bVol");
-    let mash = document.getElementById("mashIns");
-    let ferm = document.getElementById("fermIns");
-    let pairings = document.getElementById("pairings");
-    let tips = document.getElementById("tips");
-    let ingredients = [];
-    let ingredientCount = document.getElementsByClassName("ing-field");
-    for (i = 0; i < ingredientCount.length; i++) {
-      let _name = document.getElementsByName(`beer[ingredient][${i}][name]`)[0]
-        .value;
-      let _category = document.getElementsByName(
-        `beer[ingredient][${i}][category]`
-      )[0].value;
-      let _amount = document.getElementsByName(
-        `beer[ingredient][${i}][amount]`
-      )[0].value;
-      let _unit = document.getElementsByName(`beer[ingredient][${i}][unit]`)[0]
-        .value;
-      let ingObj = {
-        name: _name,
-        category: _category,
-        amount: _amount,
-        unit: _unit,
+    button.addEventListener("click", (e) => {
+      e.preventDefault;
+      let nameInput = document.getElementById("beerName");
+      let desc = document.getElementById("beerDesc");
+      let abv = document.getElementById("abv");
+      let ibu = document.getElementById("ibu");
+      let vol = document.getElementById("volume");
+      let bvol = document.getElementById("bVol");
+      let mash = document.getElementById("mashIns");
+      let ferm = document.getElementById("fermIns");
+      let pairings = document.getElementById("pairings");
+      let tips = document.getElementById("tips");
+      let ingredients = [];
+      let ingredientCount = document.getElementsByClassName("ing-field");
+      for (i = 0; i < ingredientCount.length; i++) {
+        let _name = document.getElementsByName(
+          `beer[ingredient][${i}][name]`
+        )[0].value;
+        let _category = document.getElementsByName(
+          `beer[ingredient][${i}][category]`
+        )[0].value;
+        let _amount = document.getElementsByName(
+          `beer[ingredient][${i}][amount]`
+        )[0].value;
+        let _unit = document.getElementsByName(
+          `beer[ingredient][${i}][unit]`
+        )[0].value;
+        let ingObj = {
+          name: _name,
+          category: _category,
+          amount: _amount,
+          unit: _unit,
+        };
+        ingredients.push(ingObj);
+      }
+      let beer = {
+        name: nameInput.value,
+        description: desc.value,
+        abv: abv.value,
+        ibu: ibu.value,
+        volume: vol.value,
+        boil_volume: bvol.value,
+        mash_instruct: mash.value,
+        fermentation_instruct: ferm.value,
+        food_pairing: pairings.value,
+        tips: tips.value,
+        ingredients_attributes: ingredients,
       };
-      ingredients.push(ingObj);
-    }
-    let beer = {
-      name: nameInput.value,
-      description: desc.value,
-      abv: abv.value,
-      ibu: ibu.value,
-      volume: vol.value,
-      boil_volume: bvol.value,
-      mash_instruct: mash.value,
-      fermentation_instruct: ferm.value,
-      food_pairing: pairings.value,
-      tips: tips.value,
-      ingredients_attributes: ingredients,
-    };
-    _url.addBeers(beer);
-    closeModal();
-  });
-  beerContainer.append(button);
+      _url.addBeers(beer);
+      closeModal();
+    });
+  }
+  // beerContainer.append(button);
 } //event handler for opening modal and appending new beer form
 
 closeModalButtons.addEventListener("click", () => {
