@@ -97,11 +97,6 @@ function createBeerForm() {
   beerContainer.appendChild(addIng);
 } //create new beer form
 
-// addIngredient.addEventListener("click", (e) => {
-//   e.preventDefault;
-//   createIngForm();
-// });
-
 function createIngForm() {
   const addIngredient = document.getElementById("add-ing");
   const form = document.getElementById("recipeForm");
@@ -166,60 +161,7 @@ function openModal(modal) {
     overlay.classList.add("active");
     createBeerForm();
     createIngForm();
-
-    // button.addEventListener("click", (e) => {
-    //   e.preventDefault;
-    //   let nameInput = document.getElementById("beerName");
-    //   let desc = document.getElementById("beerDesc");
-    //   let abv = document.getElementById("abv");
-    //   let ibu = document.getElementById("ibu");
-    //   let vol = document.getElementById("volume");
-    //   let bvol = document.getElementById("bVol");
-    //   let mash = document.getElementById("mashIns");
-    //   let ferm = document.getElementById("fermIns");
-    //   let pairings = document.getElementById("pairings");
-    //   let tips = document.getElementById("tips");
-    //   let ingredients = [];
-    //   let ingredientCount = document.getElementsByClassName("ing-field");
-    //   for (i = 0; i < ingredientCount.length; i++) {
-    //     let _name = document.getElementsByName(
-    //       `beer[ingredient][${i}][name]`
-    //     )[0].value;
-    //     let _category = document.getElementsByName(
-    //       `beer[ingredient][${i}][category]`
-    //     )[0].value;
-    //     let _amount = document.getElementsByName(
-    //       `beer[ingredient][${i}][amount]`
-    //     )[0].value;
-    //     let _unit = document.getElementsByName(
-    //       `beer[ingredient][${i}][unit]`
-    //     )[0].value;
-    //     let ingObj = {
-    //       name: _name,
-    //       category: _category,
-    //       amount: _amount,
-    //       unit: _unit,
-    //     };
-    //     ingredients.push(ingObj);
-    //   }
-    //   let beer = {
-    //     name: nameInput.value,
-    //     description: desc.value,
-    //     abv: abv.value,
-    //     ibu: ibu.value,
-    //     volume: vol.value,
-    //     boil_volume: bvol.value,
-    //     mash_instruct: mash.value,
-    //     fermentation_instruct: ferm.value,
-    //     food_pairing: pairings.value,
-    //     tips: tips.value,
-    //     ingredients_attributes: ingredients,
-    //   };
-    //   _url.addBeers(beer);
-    //   closeModal();
-    // });
   }
-  // beerContainer.append(button);
 } //event handler for opening modal and appending new beer form
 
 closeModalButtons.addEventListener("click", () => {
@@ -235,7 +177,6 @@ function closeModal() {
   if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
-  // _url.getBeers();
 } // event handler for closing modal. Probably need to call this when you are submitting new beer.
 
 const searchButton = document.getElementById("search");
