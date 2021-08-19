@@ -3,7 +3,6 @@ const modal = document.getElementById("modal");
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.getElementById("close-button");
 const overlay = document.getElementById("overlay");
-const beerContainer = document.getElementById("modal-body");
 const addIngredient = document.getElementById("add-ing");
 let i = 0;
 
@@ -14,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function createBeerForm() {
+  const beerContainer = document.getElementById("modal-body");
   const form = document.createElement("form");
   form.innerHTML += `
     <p>Beer Recipe:</p><br>
@@ -27,17 +27,19 @@ function createBeerForm() {
     <input id="fermIns" placeholder="Fermentation Instructions" type="text" name="beer[ferment_instruct]"/><br>
     <input id="pairings" placeholder="Food Pairings" type="text" name="beer[food_pairing]"/><br>
     <input id="tips" placeholder="Tips" type="text" name="beer[tips]"/><br>
-    <input type="submit" id="submitButton"></input>
     `;
   form.id = "recipeForm";
+  const submitButton = document.createElement("button");
+  submitButton.id = "submitButton";
+  submitButton.innerHTML = `submit`;
   beerContainer.appendChild(form);
+  beerContainer.appendChild(submitButton);
   const addIng = document.createElement("button");
   addIng.type = "button";
   addIng.id = "add-Ing";
   addIng.innerHTML = "Add Ingredient";
   button = document.getElementById("submitButton");
   button.addEventListener("click", (e) => {
-    debugger;
     e.preventDefault;
     let nameInput = document.getElementById("beerName");
     let desc = document.getElementById("beerDesc");
@@ -84,7 +86,7 @@ function createBeerForm() {
       ingredients_attributes: ingredients,
     };
     _url.addBeers(beer);
-    // closeModal();
+    closeModal();
   });
   addIng.addEventListener("click", (e) => {
     console.log(button);
