@@ -85,6 +85,7 @@ function createBeerForm() {
       tips: tips.value,
       ingredients_attributes: ingredients,
     };
+    console.log(beer);
     _url.addBeers(beer);
     closeModal();
   });
@@ -234,7 +235,7 @@ function closeModal() {
   if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
-  _url.getBeers();
+  // _url.getBeers();
 } // event handler for closing modal. Probably need to call this when you are submitting new beer.
 
 const searchButton = document.getElementById("search");
