@@ -3,18 +3,13 @@
 *::before {
   box-sizing: border-box;
 }
-body {
+/* body {
   background-color: rgba(38, 67, 146, 0.884);
-}
+} */
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.beer-list {
-  display: table;
-  margin: auto;
 }
 
 .beer-item {
@@ -24,6 +19,7 @@ body {
 }
 
 .instruct {
+  /* background-color: #2a4287; */
   display: table;
   margin: auto;
   text-align: center;
@@ -186,9 +182,10 @@ pre {
 
 li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 17px;
   font-style: normal;
   font-variant: normal;
-  font-weight: 500;
+  font-weight: 550;
   line-height: 15.4px;
+  margin: 10px;
 }
