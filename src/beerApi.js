@@ -30,10 +30,9 @@ class BeerApi {
           const newIng = data.ingredients;
           console.log(data.beer, "hello");
           const newBeer = new Beer(data.beer);
-          console.log("works");
           newBeer.buildBeerHtml();
           console.log(newIng, "what");
-          //   newIng.forEach((i) => new Ingredient(i));
+          newIng.forEach((i) => new Ingredient(i));
         } else {
         }
       })
