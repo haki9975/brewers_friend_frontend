@@ -10,6 +10,7 @@ class BeerApi {
         data.forEach((beer) => {
           const buildBeer = new Beer(beer);
           buildBeer.buildBeerHtml();
+          beer.ingredients.forEach((i) => new Ingredient(i));
         });
       })
       .catch((error) => console.warn(error));
