@@ -60,12 +60,13 @@ class BeerApi {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.status == 201) {
-          console.log(data);
           const newIng = data.ingredients;
+          console.log(data.beer, "hello");
           const newBeer = new Beer(data.beer);
           console.log("works");
           newBeer.buildBeerHtml();
-          newIng.forEach((i) => new Ingredient(i));
+          console.log(newIng, "what");
+          //   newIng.forEach((i) => new Ingredient(i));
         } else {
         }
       })
