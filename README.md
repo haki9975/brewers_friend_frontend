@@ -13,7 +13,7 @@ Once the database is seeded, run rails s to start the rails server.
 
 On the front end, navigate to the frontend folder. 
 Run explorer.exe index.html if you are running a VM in a Windows environment.
-Run open index.tml if you are in a Mac environment.
+Run open index.html if you are in a Mac environment.
 
 Be sure that you clone the back end of this app, or you will not be able to run it. 
 
